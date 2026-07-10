@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Breast Cancer Prediction</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background:#f2f2f2;
+            padding:30px;
+        }
+
+        h1{
+            text-align:center;
+            color:#2c3e50;
+        }
+
+        form{
+            width:80%;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 10px gray;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:15px;
+        }
+
+        input{
+
+            padding:10px;
+            width:95%;
+        }
+
+        button{
+
+            margin-top:20px;
+            width:100%;
+            padding:12px;
+            background:#3498db;
+            color:white;
+            border:none;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        h2{
+
+            text-align:center;
+            color:green;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Breast Cancer Prediction System</h1>
+
+<form action="/predict" method="POST">
+
+<div class="grid">
+
+{% for feature in features %}
+
+<div>
+
+<label>{{feature}}</label><br>
+
+<input type="text"
+name="{{feature}}"
+placeholder="{{feature}}"
+required>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<button type="submit">
+
+Predict Cancer
+
+</button>
+
+</form>
+
+{% if prediction %}
+
+<h2>
+
+{{prediction}}
+
+</h2>
+
+{% endif %}
+
+</body>
+
+</html>
